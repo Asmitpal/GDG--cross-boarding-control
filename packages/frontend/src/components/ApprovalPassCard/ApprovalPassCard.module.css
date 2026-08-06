@@ -1,0 +1,172 @@
+/* ApprovalPassCard.module.css */
+
+.pass {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 210px;
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 28px;
+  overflow: hidden;
+  animation: fadeUp 0.3s ease;
+}
+
+.main { padding: 22px 24px; }
+
+.stub {
+  padding: 22px 20px;
+  border-left: 2px dashed var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(217,143,43,0.06), rgba(217,143,43,0));
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--amber-ink);
+  background: var(--amber-soft);
+  border: 1px dashed var(--amber);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  display: inline-block;
+  transform: rotate(-2deg);
+  width: fit-content;
+}
+
+.title {
+  font-size: 16px;
+  font-family: var(--font-heading);
+  margin-top: 12px;
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.taskList { margin-top: 14px; }
+
+.taskItem {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.taskItem:last-child { border-bottom: none; }
+
+.taskLabel {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.taskChip {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+}
+
+.select {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 6px 7px;
+  background: var(--card);
+  color: var(--ink);
+  text-transform: uppercase;
+  width: 100%;
+}
+
+/* Stub right column */
+.budgetLabel {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+  margin-bottom: 4px;
+}
+
+.budgetInput {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 600;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 7px 9px;
+  width: 100%;
+  background: var(--card);
+  color: var(--ink);
+  transition: border-color var(--t-fast);
+}
+.budgetInput:focus { outline: 2px solid var(--ink); outline-offset: 1px; }
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* Buttons */
+.btn {
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: border-color var(--t-fast), background var(--t-fast), opacity var(--t-fast);
+  cursor: pointer;
+}
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btnApprove {
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
+}
+.btnApprove:hover:not(:disabled) { background: var(--green-ink); }
+
+.btnReject {
+  background: transparent;
+  color: var(--red);
+  border-color: var(--red-soft);
+}
+.btnReject:hover:not(:disabled) { background: var(--red-soft); }
+
+.rejectedBanner {
+  background: var(--red-soft);
+  border: 1px solid var(--red-soft);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rejectedText { font-size: 13px; color: var(--ink-soft); }
+
+@media (max-width: 600px) {
+  .pass { grid-template-columns: 1fr; }
+  .stub { border-left: none; border-top: 2px dashed var(--line); }
+}

@@ -1,0 +1,137 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Enums ────────────────────────────────────────────────────────────────────
+
+enum HireLevel {
+  IC
+  MANAGER
+  EXEC
+}
+
+enum HireStatus {
+  AWAITING_APPROVAL
+  PROVISIONING
+  BLOCKED
+  CLEARED
+}
+
+enum ApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum TaskOwner {
+  HR
+  IT
+  MANAGER
+}
+
+enum AccessLevel {
+  STANDARD
+  ELEVATED
+}
+
+enum TaskStatus {
+  PENDING
+  AWAITING_APPROVAL
+  REJECTED
+  BLOCKED
+  DONE
+}
+
+// ─── Models ───────────────────────────────────────────────────────────────────
+
+model Hire {
+  id            String     @id @default(cuid())
+  fullName      String
+  jobTitle      String
+  department    String
+  level         HireLevel  @default(IC)
+  startDate     DateTime   @db.Date
+  managerName   String
+  managerHandle String?
+  status        HireStatus @default(AWAITING_APPROVAL)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  // Relations
+  approval      ApprovalRequest?
+  tasks         TaskGraph[]
+  escalations   SLAEscalation[]
+
+  @@map("hires")
+}
+
+model ApprovalRequest {
+  id             String         @id @default(cuid())
+  hireId         String         @unique
+  status         ApprovalStatus @default(PENDING)
+  hardwareBudget Int
+  resolvedAt     DateTime?
+  resolvedBy     String?
+  submittedAt    DateTime       @default(now())
+
+  // Relations
+  hire           Hire           @relation(fields: [hireId], references: [id], onDelete: Cascade)
+
+  @@map("approval_requests")
+}
+
+model TaskGraph {
+  id              String      @id @default(cuid())
+  hireId          String
+  owner           TaskOwner
+  label           String
+  system          String?
+  accessLevel     AccessLevel?
+  requiresApproval Boolean    @default(false)
+  status          TaskStatus  @default(PENDING)
+  slaHours        Int
+  unlockedAt      DateTime?
+  completedAt     DateTime?
+  isEscalated     Boolean     @default(false)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  // Relations
+  hire            Hire        @relation(fields: [hireId], references: [id], onDelete: Cascade)
+  escalations     SLAEscalation[]
+
+  @@map("task_graphs")
+}
+
+model SLAEscalation {
+  id           String    @id @default(cuid())
+  hireId       String
+  taskId       String
+  owner        TaskOwner
+  overdueHours Int
+  notifiedAt   DateTime  @default(now())
+
+  // Relations
+  hire         Hire      @relation(fields: [hireId], references: [id], onDelete: Cascade)
+  task         TaskGraph @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+  @@map("sla_escalations")
+}
+
+model RuleConfig {
+  id          String   @id @default(cuid())
+  departments Json     // Record<dept, { deviceTier, extras[] }>
+  deviceTiers Json     // Record<tier, { label, budget }>
+  sla         Json     // Record<category, hours>
+  updatedAt   DateTime @updatedAt
+
+  @@map("rule_configs")
+}

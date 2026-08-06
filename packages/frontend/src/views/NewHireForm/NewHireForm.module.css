@@ -1,0 +1,101 @@
+/* NewHireForm.module.css */
+
+.wrap { padding: 32px 28px 80px; max-width: 980px; margin: 0 auto; }
+
+.head { margin-bottom: 22px; }
+.head h2 { font-size: 22px; }
+.headSub { color: var(--ink-soft); font-size: 13px; margin-top: 4px; }
+
+.formCard {
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  padding: 26px;
+  max-width: 600px;
+  animation: fadeUp 0.3s ease;
+}
+
+.field        { margin-bottom: 16px; }
+.field label  { display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px; color: var(--ink-soft); }
+
+.field input[type="text"],
+.field input[type="date"],
+.field input[type="email"],
+.field select {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font-size: 13.5px;
+  background: var(--paper);
+  color: var(--ink);
+  transition: border-color var(--t-fast), outline var(--t-fast);
+}
+
+.field input:focus,
+.field select:focus {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+}
+
+.fieldRow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.radioGroup { display: flex; gap: 8px; }
+
+.radioOpt {
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 9px;
+  text-align: center;
+  font-size: 12.5px;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color var(--t-fast), background var(--t-fast);
+}
+
+.radioOpt input { display: none; }
+
+.radioOpt.checked {
+  border-color: var(--ink);
+  background: var(--paper);
+  font-weight: 600;
+}
+
+.formActions { display: flex; gap: 10px; margin-top: 22px; }
+
+.btn {
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: border-color var(--t-fast), background var(--t-fast);
+  text-decoration: none;
+}
+.btnPrimary { background: var(--ink); color: #fff; border-color: var(--ink); }
+.btnPrimary:hover:not(:disabled) { background: #000; }
+.btnPrimary:disabled { opacity: 0.5; cursor: not-allowed; }
+.btnGhost   { border-color: transparent; background: transparent; }
+.btnGhost:hover { background: var(--line-soft); }
+
+.error {
+  background: var(--red-soft);
+  color: var(--red-ink);
+  border: 1px solid var(--red-soft);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 600px) {
+  .fieldRow    { grid-template-columns: 1fr; }
+  .radioGroup  { flex-direction: column; }
+}

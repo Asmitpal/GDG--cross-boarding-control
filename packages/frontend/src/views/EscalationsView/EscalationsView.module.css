@@ -1,0 +1,99 @@
+/* EscalationsView.module.css */
+
+.wrap { padding: 32px 28px 80px; max-width: 980px; margin: 0 auto; }
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.head h2 { font-size: 22px; }
+.headSub { color: var(--ink-soft); font-size: 13px; margin-top: 4px; }
+
+.empty {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 56px 28px;
+  text-align: center;
+  color: var(--ink-soft);
+  background: var(--card);
+}
+.empty h3 { color: var(--ink); font-size: 17px; margin-bottom: 8px; }
+.empty p  { max-width: 420px; margin: 0 auto; font-size: 13.5px; }
+
+.feed { display: flex; flex-direction: column; gap: 8px; }
+
+.feedItem {
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  border-left: 3px solid var(--red);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+  animation: flipIn 0.35s ease;
+}
+
+.feedMsg { font-size: 13px; line-height: 1.55; }
+.feedMsg b { font-weight: 600; }
+
+.feedMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+  flex-wrap: wrap;
+}
+
+.ownerChip {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  background: var(--ink);
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.sysChip {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+.feedRight { text-align: right; flex: none; }
+
+.feedTime {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+.overdueTag {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--red-ink);
+  margin-top: 4px;
+}
+
+.hireLink {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.hireLink:hover { color: var(--green); }

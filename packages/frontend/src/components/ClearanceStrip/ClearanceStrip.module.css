@@ -1,0 +1,32 @@
+/* ClearanceStrip.module.css */
+
+.strip { display: flex; align-items: center; gap: 3px; }
+
+.seg {
+  position: relative;
+  flex: 1;
+  height: 9px;
+  background: var(--line-soft);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.segFill {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 0%;
+  border-radius: 2px;
+  background: var(--green);
+  transition: width 0.5s ease;
+}
+
+.segFill.amber { background: var(--amber); }
+.segFill.red   { background: var(--red); }
+
+.dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--paper);
+  flex: none;
+}

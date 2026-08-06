@@ -1,0 +1,17 @@
+{
+  "name": "crossboarding-system",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start":          "cd packages/frontend && npm run dev",
+    "dev":            "cd packages/frontend && npm run dev",
+    "dev:backend":    "cd packages/backend && npm run dev",
+    "dev:frontend":   "cd packages/frontend && npm run dev",
+    "build:backend":  "cd packages/backend && npm run build",
+    "build:frontend": "cd packages/frontend && npm run build",
+    "install:all":    "cd packages/backend && npm install && cd ../frontend && npm install",
+    "db:migrate":     "cd packages/backend && npx prisma migrate dev",
+    "db:seed":        "cd packages/backend && npm run db:seed",
+    "db:generate":    "cd packages/backend && npx --no-install prisma generate"
+  }
+}

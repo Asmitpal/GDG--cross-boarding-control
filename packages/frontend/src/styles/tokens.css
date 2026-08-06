@@ -1,0 +1,96 @@
+/* ═══════════════════════════════════════════════════════════════════
+   CROSS-BOARDING DESIGN TOKENS
+   Exact port of the original design system — Space Grotesk + IBM Plex
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ─ Palette ──────────────────────────────────────────────────── */
+  --paper:        #EEF2F0;
+  --card:         #FFFFFF;
+  --ink:          #131715;
+  --ink-soft:     #5B655F;
+  --ink-faint:    #8B958E;
+  --line:         #CBD3CD;
+  --line-soft:    #DEE4E0;
+
+  --amber:        #D98F2B;
+  --amber-soft:   #F7E7CC;
+  --amber-ink:    #7A4E0F;
+
+  --green:        #1F7A5C;
+  --green-soft:   #DBEEE5;
+  --green-ink:    #0F4D38;
+
+  --red:          #B23B3B;
+  --red-soft:     #F4DEDC;
+  --red-ink:      #7A2323;
+
+  --blue:         #3B4A8F;
+  --blue-soft:    #E7EAF5;
+
+  /* ─ Shape ────────────────────────────────────────────────────── */
+  --radius:       10px;
+  --radius-sm:    6px;
+  --radius-lg:    14px;
+  --shadow:       0 1px 2px rgba(19,23,21,0.06), 0 6px 20px rgba(19,23,21,0.05);
+  --shadow-md:    0 2px 6px rgba(19,23,21,0.08), 0 12px 32px rgba(19,23,21,0.08);
+
+  /* ─ Typography ───────────────────────────────────────────────── */
+  --font-body:    'IBM Plex Sans', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-mono:    'IBM Plex Mono', monospace;
+
+  /* ─ Transitions ─────────────────────────────────────────────── */
+  --t-fast:       0.12s ease;
+  --t-base:       0.18s ease;
+  --t-slow:       0.35s ease;
+}
+
+/* ─ Reset ─────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+button { font-family: inherit; cursor: pointer; }
+input, select, textarea { font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+
+/* ─ Scrollbar ────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: var(--line); border-radius: 3px; }
+
+/* ─ Utility ──────────────────────────────────────────────────── */
+.mono { font-family: var(--font-mono); }
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ─ Keyframes ────────────────────────────────────────────────── */
+@keyframes fadeUp   { from { opacity:0; transform:translateY(6px);  } to { opacity:1; transform:translateY(0); } }
+@keyframes flipIn   { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:translateY(0); } }
+@keyframes pulse    { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+@keyframes spin     { to { transform: rotate(360deg); } }
+
+.animate-fade-up  { animation: fadeUp  0.3s ease both; }
+.animate-flip-in  { animation: flipIn  0.35s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

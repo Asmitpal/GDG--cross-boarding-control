@@ -1,0 +1,102 @@
+/* TaskGroup.module.css */
+
+.group { margin-bottom: 22px; }
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 10px;
+}
+
+.gateTag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  background: var(--ink);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 5px;
+}
+
+.ownerTitle {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.taskList {
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* ─ Task Row ─────────────────────────────────────────────────── */
+.taskRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line-soft);
+  transition: background var(--t-fast);
+}
+.taskRow:last-child { border-bottom: none; }
+.taskRow:hover      { background: rgba(238,242,240,0.4); }
+.taskRow.awaiting   { opacity: 0.55; }
+.taskRow.escalated  { border-left: 3px solid var(--red); }
+
+.check {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--green);
+  flex: none;
+  cursor: pointer;
+}
+
+.body     { flex: 1; min-width: 0; }
+
+.label {
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: color var(--t-fast);
+}
+.label.done { text-decoration: line-through; color: var(--ink-faint); }
+
+.sub {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 3px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+
+.chip.elevated { border-color: var(--amber); color: var(--amber-ink); background: var(--amber-soft); }
+
+.slaText { font-size: 11px; color: var(--ink-faint); }
+.slaText.overdue { color: var(--red); font-weight: 500; }
+
+.escalateBadge {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--red-ink);
+  background: var(--red-soft);
+  border: 1px solid var(--red-soft);
+  border-radius: 4px;
+  padding: 1px 6px;
+}

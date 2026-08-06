@@ -1,0 +1,88 @@
+/* ManifestView.module.css */
+
+.wrap   { padding: 32px 28px 80px; max-width: 980px; margin: 0 auto; }
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.head h2  { font-size: 22px; }
+.headSub  { color: var(--ink-soft); font-size: 13px; margin-top: 4px; }
+
+/* Buttons */
+.btn {
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: border-color var(--t-fast), background var(--t-fast);
+  cursor: pointer;
+  text-decoration: none;
+}
+.btnPrimary { background: var(--ink); color: #fff; border-color: var(--ink); }
+.btnPrimary:hover { background: #000; }
+
+/* Empty state */
+.empty {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 56px 28px;
+  text-align: center;
+  color: var(--ink-soft);
+  background: var(--card);
+}
+.empty h3   { color: var(--ink); font-size: 17px; margin-bottom: 8px; }
+.empty p    { max-width: 420px; margin: 0 auto 20px; font-size: 13.5px; }
+
+/* Manifest list */
+.manifest { display: flex; flex-direction: column; gap: 10px; }
+
+.row {
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  display: grid;
+  grid-template-columns: 2.1fr 1.3fr 1.6fr 0.9fr auto;
+  gap: 18px;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+  text-decoration: none;
+  color: inherit;
+  animation: fadeUp 0.25s ease both;
+}
+.row:hover { border-color: var(--ink-faint); box-shadow: var(--shadow); }
+
+.hireName { font-weight: 600; font-size: 14.5px; }
+.hireRole { color: var(--ink-soft); font-size: 12.5px; margin-top: 2px; }
+
+.startInfo  { font-size: 12.5px; color: var(--ink-soft); }
+.startDays  { font-family: var(--font-mono); color: var(--ink); font-weight: 500; }
+
+.readiness  { font-family: var(--font-mono); font-size: 13px; text-align: right; }
+
+/* Loading skeleton */
+.skeleton {
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  height: 64px;
+  animation: pulse 1.5s ease infinite;
+}
+
+@media (max-width: 720px) {
+  .row { grid-template-columns: 1fr; gap: 10px; }
+  .wrap { padding: 20px 16px 60px; }
+}
